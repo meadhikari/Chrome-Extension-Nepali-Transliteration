@@ -1,0 +1,57 @@
+<!--
+You are free to copy and use this sample in accordance with the terms of the
+Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Google AJAX Search API Sample</title>
+    <script src="http://www.google.com/jsapi?key=AIzaSyA5m1Nc8ws2BbmPRwKu5gFradvD_hgq6G0" type="text/javascript"></script>
+    <script type="text/javascript">
+    /*
+    *  How to setup a textarea that allows Transliteration from English to Hindi.
+    */
+    
+    google.load("elements", "1", {packages: "transliteration"});
+    
+      
+      function OnLoad() {
+      var content = document.getElementById('content');
+      // Create the HTML for our text area
+      content.innerHTML = '<div>Type a word and hit space to get it in Nepali. ' +
+                          '</div>' +
+                          '<textarea cols="50" rows="5" id="transliterateTextarea"></textarea>' + 
+                          
+ 
+                          '<div>Type in (do not copy/paste): ' +
+                          '<b>Mero nam ram ho</b></div>';
+    
+      var options = {
+          sourceLanguage:
+              google.elements.transliteration.LanguageCode.ENGLISH,
+          destinationLanguage:
+              [google.elements.transliteration.LanguageCode.NEPALI],
+          shortcutKey: 'ctrl+g',
+          transliterationEnabled: true
+      };
+    
+      // Create an instance on TransliterationControl with the required
+      // options.
+      var control =
+          new google.elements.transliteration.TransliterationControl(options);
+    
+      // Enable transliteration in the textbox with id
+      // 'transliterateTextarea'.
+      control.makeTransliteratable(['transliterateTextarea']);
+    }
+    
+    google.setOnLoadCallback(OnLoad);
+    </script>
+  </head>
+  <body style="font-family: Arial;border: 0 none;">
+    <div id="content">Loading...</div>
+  </body>
+</html>
+​
